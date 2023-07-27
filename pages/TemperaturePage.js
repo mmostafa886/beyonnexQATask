@@ -10,6 +10,7 @@ class TempPage {
 
     async getTemp(){
         const currentDisplayedTempTxt = await this.currentTempLable.textContent;
+        console.log(currentDisplayedTempTxt);
         const currentDisplayedTemp = parseFloat(currentDisplayedTempTxt);
         return currentDisplayedTemp;
 
