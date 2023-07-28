@@ -7,40 +7,35 @@ class ItemsPage {
     }
 
     async selectCheapAloeItem(itemType) {
-        // const materialContainingItems = Selector('p').withText(itemType);
         const materialContainingItems = Selector('.text-center.col-4').child(1).withText(itemType);
         const itemsCount = await materialContainingItems.count;
-        // const priceElements = Selector('p').withText('Price:');
-       const priceElements = Selector('.text-center.col-4').child(2);
 
         console.log(itemsCount);
 
         let leastPrice = Number.MAX_SAFE_INTEGER;
         let selectedItem;
         let selectedButton;
+        let wholeItem;
 
         for (let i = 0; i < itemsCount; i++) {
             const item = materialContainingItems.nth(i);
-            // console.log(await item.innerText);
-            const priceElement = priceElements.nth(i);
+            const priceElement = item.nextSibling();
+            const parentElement = item.parent();
             const priceText = await priceElement.innerText;
-            // console.log('Price Text:', priceText);
-        const price = parseFloat(priceText.replace('Price: Rs. ', '').replace('Price: ', ''));
-
+            const price = parseFloat(priceText.replace('Price: Rs. ', '').replace('Price: ', ''));
 
             if (price < leastPrice) {
                 leastPrice = price;
                 selectedItem = item;
-                // Find the button element associated with the current item having the least price
+                wholeItem = parentElement;
                 selectedButton = selectedItem.sibling('button.btn.btn-primary');
-                console.log(price);
+                // console.log(price);
 
             }
         }
         if (selectedItem && selectedButton && leastPrice) {
             await t.takeScreenshot();
-            // const submitBtn = selectedItem.sibling('button');
-            await t.takeElementScreenshot(selectedItem);
+            await t.takeElementScreenshot(wholeItem);
             await t.click(selectedButton);
 
         } else {

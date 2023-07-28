@@ -7,40 +7,40 @@ class ItemsPage {
     }
 
     async selectCheapAloeItem(itemType) {
-        const materialContainingItems = Selector('p').withText(itemType);
+        const materialContainingItems = Selector('.text-center.col-4').child(1).withText(itemType);
         const itemsCount = await materialContainingItems.count;
-        const priceElements = Selector('p').withText('Price:');
 
         console.log(itemsCount);
-
         let leastPrice = Number.MAX_SAFE_INTEGER;
         let selectedItem;
         let selectedButton;
+        let wholeItem;
 
         for (let i = 0; i < itemsCount; i++) {
-            const item =  materialContainingItems.nth(i);
-            // console.log(await item.innerText);
-            const priceElement = priceElements.nth(i);
+            const item = materialContainingItems.nth(i);
+            const priceElement = item.nextSibling();
+            const parentElement = item.parent();
             const priceText = await priceElement.innerText;
-            // console.log('Price Text:', priceText);
-            const price = parseInt(priceText.replace('Price: Rs. ', ''));
+            console.log(priceText);
+        const price = parseFloat(priceText.replace('Price: Rs. ', '').replace('Price: ', ''));
+        console.log(price);
 
             if (price < leastPrice) {
                 leastPrice = price;
                 selectedItem = item;
-                            // Find the button element associated with the current item having the least price
-            selectedButton = await selectedItem.sibling('button');
-            
+                wholeItem = parentElement;
+                selectedButton = selectedItem.sibling('button.btn.btn-primary');
+                // console.log(price);
+
+            }
         }
-    }
-        if (selectedItem) {
+        if (selectedItem && selectedButton && leastPrice) {
             await t.takeScreenshot();
-           // const submitBtn = selectedItem.sibling('button');
-            await t.takeElementScreenshot(selectedItem);
+            await t.takeElementScreenshot(wholeItem);
             await t.click(selectedButton);
 
         } else {
-            console.error('No item with '+itemType+' found.');
+            console.error('No item with ' + itemType + ' found.');
         }
     }
 }
