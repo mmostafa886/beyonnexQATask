@@ -5,34 +5,15 @@ class TempPage {
         this.currentTempLable = Selector('#temperature');
         this.moistBtn = Selector('button.btn.btn-primary').withText('Buy moisturizers');
         this.sunScreenBtn = Selector('button.btn.btn-primary').withText('Buy sunscreens');
-
     }
 
+    /**This promise is to get the current temprature displayed in the first page when navigating to (https://weathershopper.pythonanywhere.com/)
+     * based on this value, the user will be redirected to either the 'Moisturizer' or 'SunScreen' pages*/
     async getTemp(){
         const currentDisplayedTempTxt = await this.currentTempLable.textContent;
-        console.log(currentDisplayedTempTxt);
+       // console.log(currentDisplayedTempTxt);
         const currentDisplayedTemp = parseFloat(currentDisplayedTempTxt);
         return currentDisplayedTemp;
-
-    }
-
-    async selectBtn() {
-        const currentTempTxt = await this.currentTempLable.textContent;
-        const currentTemp = parseFloat(currentTempTxt);
-        console.log(currentTempTxt);
-        console.log(currentTemp);
-        try {
-        if (currentTemp < 19) {
-            await t.click(this.moistBtn);
-        }
-        else if (currentTemp > 34) {
-            await t.click(this.sunScreenBtn);
-        }
-    }
-    catch(error){
-        console.error("The provided Temprature is normal. You don't need to Buy neither 'Moisturizer' nor 'Sunscreen'" );
-    }
-    
     }
 }
 
