@@ -1,2 +1,4 @@
 node_modules/
 screenshots/
+pages/*copy.js
+test/selectProductTest.js

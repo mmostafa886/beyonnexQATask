@@ -1,6 +1,6 @@
 import { t } from "testcafe";
 import TempPage from "../pages/TemperaturePage";
-import ItemsPage from "../pages/ItemPage copy";
+import ItemsPage from "../pages/ItemPagecopy";
 
 
 fixture('Purchase Based On the Current Temrature')

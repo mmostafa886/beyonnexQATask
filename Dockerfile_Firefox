@@ -1,0 +1,51 @@
+#This docker file is sued to execute all the scripts in the 'test' folder on firefox
+#As the base image doesn't have GUI, we need to take care of 2 points 
+# (1- always run firefox in headless mode, 2-taking screenshots should be commented as it is not possible to be done in a system without GUI)
+#To run excute the test scripts using this docker image, you need to do the following
+    # - Rename this dile to be 'Dockerfile'
+    # - Execute the command (docker build -t <image_Name> .) to build the image & copy the test file to it
+    # - Execute the command (docker run --rm <image_Name>) to run the tests then remove the image
+# Base image with Node.js and npm pre-installed
+FROM node:latest
+
+# Install Firefox dependencies
+RUN apt-get update && apt-get install -y \
+    wget \
+    gnupg \
+    ca-certificates \
+    libx11-xcb1 \
+    libxcomposite1 \
+    libxcursor1 \
+    libxdamage1 \
+    libxi6 \
+    libxtst6 \
+    libnss3 \
+    libcups2 \
+    libxss1 \
+    libxrandr2 \
+    libasound2 \
+    libpangocairo-1.0-0 \
+    libatk1.0-0 \
+    libatk-bridge2.0-0 \
+    libgtk-3-0 \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+# Install Firefox
+RUN apt-get update && apt-get install -y firefox-esr
+
+# Install TestCafe globally
+RUN npm install -g testcafe
+
+# Set up a non-root user for running TestCafe (optional but recommended)
+RUN useradd -m testcafeuser
+USER testcafeuser
+
+# Set the working directory
+WORKDIR /home/testcafeuser/app
+
+# Copy the TestCafe tests into the image
+COPY . .
+
+# Start TestCafe
+CMD ["testcafe", "firefox:headless", "test/selectProductTest.js"]
