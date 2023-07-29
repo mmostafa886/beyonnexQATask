@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   build:
-    name: Run TestCafe Tests
+    name: Run TestCafe Tests on Ubuntu & Windows
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
