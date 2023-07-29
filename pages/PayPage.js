@@ -17,7 +17,7 @@ class PayPage {
 
     }
 
-    async completePaymen(mail, cardNum, cardEnd, cardCVC, zCode) {
+    async completePayment(mail, cardNum, cardEnd, cardCVC, zCode) {
         await t
             .expect(this.checkoutTitle.innerText).contains('Checkout')
             .expect(this.totalAmount.innerText).notEql('Total: Rupees 0');

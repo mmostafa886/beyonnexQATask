@@ -6,7 +6,7 @@ class ItemsPage {
         this.cartBtn = Selector('.thin-text.nav-link');
     }
 
-    async selectCheapAloeItem(itemType) {
+    async selectCheapestItem(itemType) {
         const materialContainingItems = Selector('.text-center.col-4').child(1).withText(itemType);
         const itemsCount = await materialContainingItems.count;
 
@@ -29,13 +29,14 @@ class ItemsPage {
                 selectedItem = item;
                 wholeItem = parentElement;
                 selectedButton = selectedItem.sibling('button.btn.btn-primary');
-                // console.log(price);
 
             }
         }
         if (selectedItem && selectedButton && leastPrice) {
-            await t.takeScreenshot();
-            await t.takeElementScreenshot(wholeItem);
+
+            // //The following 2 steps of taking needs to be commented if we gonna use the scripts on docker
+            // await t.takeScreenshot();
+            // await t.takeElementScreenshot(wholeItem);
             await t.click(selectedButton);
 
         } else {
