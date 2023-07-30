@@ -21,7 +21,7 @@ jobs:
 
       - name: Run TestCafe tests and generate HTML report
         run: |
-           testcafe chrome:headless test/ --reporter html:./reports/report_$(date +"%Y-%m-%d_%H-%M-%S").html
+          npx testcafe chrome:headless test/ --reporter html:./reports/report_$(date +"%Y-%m-%d_%H-%M-%S").html
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v2
