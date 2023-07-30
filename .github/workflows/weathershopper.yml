@@ -8,9 +8,22 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-    steps:
-      - uses: actions/checkout@v1
-      - name: Install TestCafe from 'npm' and Run Tests
-        uses: DevExpress/testcafe-action@latest
-        with:
-          args: "chrome test"
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v2
+    
+          - name: Setup Node.js
+            uses: actions/setup-node@v2
+    
+          - name: Install dependencies
+            run: npm install
+    
+          - name: Run TestCafe tests and generate HTML report
+            run: |
+              npx testcafe chrome:headless test/ --reporter html:./reports/report.html
+    
+          - name: Upload HTML report
+            uses: actions/upload-artifact@v2
+            with:
+              name: testcafe-report
+              path: ./reports  # The folder where the HTML report is generated
