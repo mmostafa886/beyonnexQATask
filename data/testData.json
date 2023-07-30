@@ -1,0 +1,18 @@
+{
+  "Temprature": {
+    "TempLow": 19,
+    "TempHigh": 34
+  },
+  "moistCategories": { "firstMoist": "aloe", "secondMoist": "almond" },
+  "sunscreenCategories": {
+    "firstSunscreen": "SPF-50",
+    "secondSunscreen": "SPF-30"
+  },
+  "paymentDetails": {
+    "email": "test@test.com",
+    "cn": "4242 4242 4242 4242",
+    "ced": "12/34",
+    "cvc": "000",
+    "zip": "1234"
+  }
+}
