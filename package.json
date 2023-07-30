@@ -2,13 +2,16 @@
   "name": "weathershopper",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "testcafe": "^3.0.1"
+    "testcafe": "^3.0.1",
+    "testcafe-reporter-html": "^1.4.6"
   },
-  "devDependencies": {},
-  "description": ""
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {}
 }
