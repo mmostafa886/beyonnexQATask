@@ -21,7 +21,8 @@ jobs:
 
       - name: Run TestCafe tests and generate HTML report
         run: |
-          npx testcafe chrome:headless test/ --reporter html:./reports/report.html
+          current_date_time=$(date +"%Y-%m-%d_%H-%M-%S")
+          npx testcafe chrome:headless test/ --reporter html:./reports/report_$current_date_time.html
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v2
