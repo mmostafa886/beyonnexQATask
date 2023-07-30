@@ -2,7 +2,7 @@ name: WeatherShopper CI
 on: [push]
 
 jobs:
-  build:
+  test:
     name: Run TestCafe Tests on Ubuntu & Windows
     runs-on: ${{ matrix.os }}
     strategy:
