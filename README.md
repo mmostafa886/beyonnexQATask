@@ -50,7 +50,7 @@ We have different ways to execute the prepared script
 
 1.  There are some comments provided on the script for clarification & highlighting of some points.
 2.  The data provided to the test script (For any used variable) can be found under the directory(./data/testData.json) so that the script is data driven which helps in minimizing the need for code maintenance when the test data is chnaged.
-3.  The parts related to screenshots in the script needs to be commented (in case of docker a or b) as they can’t be executed there, but they can they can work normally when running locally or with Github Actions [Those parts can be found in ./pages/ItemPage].
+3.  The parts related to screenshots in the script needs to be commented (in case of docker a or b) as they can’t be executed there, but they can they can work normally when running locally or with Github Actions [Those parts can be found in ./pages/ItemPage & ./pages/PayPage].
 4.  In the case of Docker-desktop, make sure of the network configuration on the host machine as it may cause connection issues (& hence script failure) if not properly configured.
 5.  The Dockerfiles in the project are examples but for sure they can be configured as per need.
 6.  Although the configured Github Actions workflow runs in case of code push, we can configure it or another workflow to run also periodically and in both cases, it can be executed on demand.

@@ -3,8 +3,8 @@ import { Selector, t } from "testcafe";
 class TempPage {
     constructor() {
         this.currentTempLable = Selector('#temperature');
-        this.moistBtn = Selector('button.btn.btn-primary').withText('Buy moisturizers');
-        this.sunScreenBtn = Selector('button.btn.btn-primary').withText('Buy sunscreens');
+        this.moistBtn = Selector('button').withText('Buy moisturizers');
+        this.sunScreenBtn = Selector('button').withText('Buy sunscreens');
     }
 
     /**This promise is to get the current temprature displayed in the first page when navigating to (https://weathershopper.pythonanywhere.com/)
@@ -12,7 +12,7 @@ class TempPage {
     async getTemp(){
         const currentDisplayedTempTxt = await this.currentTempLable.textContent;
        // console.log(currentDisplayedTempTxt);
-        const currentDisplayedTemp = parseFloat(currentDisplayedTempTxt.replace('℃', ''));
+        const currentDisplayedTemp = parseInt(currentDisplayedTempTxt.replace('℃', ''));
         return currentDisplayedTemp;
     }
 }

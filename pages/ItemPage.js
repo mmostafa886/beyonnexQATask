@@ -8,7 +8,8 @@ import { Selector, t } from "testcafe";
 
 class ItemsPage {
   constructor() {
-    this.cartBtn = Selector(".thin-text.nav-link");
+    //this.cartBtn = Selector(".thin-text.nav-link");
+    this.cartBtn = Selector("button").withText('Cart');
   }
 
   async selectCheapestItem(itemType) {
@@ -37,8 +38,8 @@ class ItemsPage {
       const priceElement = item.nextSibling();
       const parentElement = item.parent();
       const priceText = await priceElement.innerText;
-      const price = parseFloat(
-        priceText.replace("Price: Rs. ", "").replace("Price: ", "")
+      const price = parseInt(
+        priceText.replace("Price: ", "").replace("Rs. ", "")
       );
 
       /**This is where we perform the prices' comparison process & in case of condition matching, we are getting the corresponding parent item & Add button
