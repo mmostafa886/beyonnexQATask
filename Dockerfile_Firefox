@@ -48,4 +48,4 @@ WORKDIR /home/testcafeuser/app
 COPY . .
 
 # Start TestCafe
-CMD ["testcafe", "firefox:headless", "test/selectProductTest.js"]
+CMD ["testcafe", "firefox:headless", "test"]

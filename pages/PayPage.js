@@ -58,8 +58,8 @@ class PayPage {
     await t
       .expect(this.paymentSuccess.visible)
       .ok({ timeout: 8000 }) //A timeout was added here because the success page is taking longer than usual sometimes
-      .takeScreenshot()
-      .takeElementScreenshot(this.paymentSuccess); //This line needs to be commented if we are working on docker
+      // .takeScreenshot()
+      // .takeElementScreenshot(this.paymentSuccess); //This line needs to be commented if we are working on docker
   }
 }
 export default new PayPage();

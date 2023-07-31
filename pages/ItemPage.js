@@ -57,9 +57,9 @@ class ItemsPage {
      * Be careful that, there is a section here that needs to be commented if you gonna execute on Docker
      */
     if (selectedItem && selectedButton && leastPrice) {
-      //The following 2 steps of taking screenshots needs to be commented if we gonna use the scripts on docker
-      await t.takeScreenshot();
-      await t.takeElementScreenshot(wholeItem);
+      // //The following 2 steps of taking screenshots needs to be commented if we gonna use the scripts on docker
+      // await t.takeScreenshot();
+      // await t.takeElementScreenshot(wholeItem);
       /////////////////////////
       await t.click(selectedButton);
     } else {
