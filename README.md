@@ -18,10 +18,22 @@ We have different ways to execute the prepared script
 1.  On a local machine [OS independent]
     1. Clone the repo code to a local folder.
     2. Open the terminal in this folder.
-    3. ` `Run the command (npm install) to install all the project dependencies.
+    3. Run the below command to install all the project dependencies:
+
+       `$ npm install`
+
     4. The 2 previous steps can be done from inside the VSCode.
-    5. Run the command (testacafe <Browser> test) to execute the script [where <Browser> is any of Chrome, Firefox, Edge or a mix of them].
-    6. Examples of the execution command: (testcafe chrome test), (testcafe firefox test), (testcafe chrome, firefox test), (testcafe all test).
+    5. Run the command (npx testacafe <Browser> test) to execute the script [where <Browser> is any of Chrome, Firefox, Edge or a mix of them].
+    6. Examples of the execution command:
+       
+       `$ npx testcafe chrome test`
+
+       `$ npx testcafe firefox test`
+
+       `$ npx testcafe chrome, firefox test`
+
+       `$ npx testcafe all test`
+ 
     7. In case it is needed to generate a report, the user can run the command (testacafe <Browser> test --reporter html:./reports/report*$(date +"%Y-%m-%d*%H-%M-%S").html) whis will create <report_currentDate/Time>.html file in the 'reports' folder in the project root directory & the user can open by the preferred browser.
 2.  On Docker(a)
     1. Clone the repo.
