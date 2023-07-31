@@ -6,7 +6,6 @@
 - ‘Testcafe’ has been used as a web test automation framework using Javascript to prepare the needed scripts(s).
 
 ## Environment Needs
-
 1.  Node.js
 2.  VSCode (IDE).
 3.  Testcafe
@@ -15,16 +14,26 @@
     And of course internet connectivity
 
 ## How to Run the scripts
-
 We have different ways to execute the prepared script
-
 1.  On a local machine [OS independent]
     1. Clone the repo code to a local folder.
     2. Open the terminal in this folder.
-    3. ` `Run the command (npm install) to install all the project dependencies.
+    3. Run the below command to install all the project dependencies:
+
+       `$ npm install`
+
     4. The 2 previous steps can be done from inside the VSCode.
-    5. Run the command (testacafe <Browser> test) to execute the script [where <Browser> is any of Chrome, Firefox, Edge or a mix of them].
-    6. Examples of the execution command: (testcafe chrome test), (testcafe firefox test), (testcafe chrome, firefox test), (testcafe all test).
+    5. Run the command (npx testacafe <Browser> test) to execute the script [where <Browser> is any of Chrome, Firefox, Edge or a mix of them].
+    6. Examples of the execution command:
+       
+       `$ npx testcafe chrome test`
+
+       `$ npx testcafe firefox test`
+
+       `$ npx testcafe chrome, firefox test`
+
+       `$ npx testcafe all test`
+ 
     7. In case it is needed to generate a report, the user can run the command (testacafe <Browser> test --reporter html:./reports/report*$(date +"%Y-%m-%d*%H-%M-%S").html) whis will create <report_currentDate/Time>.html file in the 'reports' folder in the project root directory & the user can open by the preferred browser.
 2.  On Docker(a)
     1. Clone the repo.
@@ -47,7 +56,6 @@ We have different ways to execute the prepared script
     3. After the workflow finishes the execution, a report for each execution is generated and it can be found in the commpressed file in the "Artifacts" section of the workflow "Summary".
 
 ## Notes
-
 1.  There are some comments provided on the script for clarification & highlighting of some points.
 2.  The data provided to the test script (For any used variable) can be found under the directory(./data/testData.json) so that the script is data driven which helps in minimizing the need for code maintenance when the test data is chnaged.
 3.  The parts related to screenshots in the script needs to be commented (in case of docker a or b) as they can’t be executed there, but they can they can work normally when running locally or with Github Actions [Those parts can be found in ./pages/ItemPage & ./pages/PayPage].
@@ -56,8 +64,8 @@ We have different ways to execute the prepared script
 6.  Although the configured Github Actions workflow runs in case of code push, we can configure it or another workflow to run also periodically and in both cases, it can be executed on demand.
 
 ## Possible Optimizations
-
 1.  A config file containing all the needed executions' configurations may be created to minimize the need for cutomizing the executin command everytime the script is executed.
 2.  Preparing a docker image where it can be used to execute scripts with GUI & headless for Chrome & Firefox with the possibility to take screenshots.
-3.  Optimize the Github Action workflow to contain different types & versions of browsers and operating systems.
-4.  Optimize the script to use a ‘Reporting utility’ or ‘Report Portal’ for better (execution results, history & statistics) display (Currently we can generate html report file but without keeping the history and also not availale for the docker execution).
+3.  Include 'Safari' in my testing scope (as the task includes IFrames which may caus issues when trying to manipulate from Safari).
+4.  Optimize the Github Action workflow to contain different types & versions of browsers and operating systems.
+5.  Optimize the script to use a ‘Reporting utility’ or ‘Report Portal’ for better (execution results, history & statistics) display (Currently we can generate html report file but without keeping the history and also not availale for the docker execution).
